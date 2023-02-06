@@ -67,9 +67,6 @@ if __name__ == "__main__":
                 init_frame = 1 + (j * 7)
                 init_x = 2 + (j * 7)
                 init_y = 3 + (j * 7)
-                init_vel = 4 + (j * 7)
-                init_acc = 5 + (j * 7)
-                init_lane = 6 + (j * 7)
                 skip = 7
                 for k in range(j + 1, occurrence):
                     frame = a[i][init_frame]
@@ -81,7 +78,7 @@ if __name__ == "__main__":
                             add_edge(a[i][init+skip], a[i][init], 1)
                         skip += 7
 
-        path = f'./adjacency_matrix/{frame}_output.csv'
+        path = f'./testestetst/{frame}_output.csv'
         df = pd.DataFrame.from_records(graph)
         df.columns = column_name
         df.index = column_name
