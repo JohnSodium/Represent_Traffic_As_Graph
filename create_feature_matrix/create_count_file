@@ -1,0 +1,29 @@
+import pandas as pd
+import numpy as np
+
+
+# Run Sort_By_Frame.py before running this. Run this second
+
+file = pd.read_csv("sorted.csv")
+count = 1
+
+frame = []
+count_data = []
+
+# count occurrences of each Frame_ID
+for i in range(0, len(file) - 1):
+    # print(file["Frame_ID"][i], file["Frame_ID"][i + 1])
+    if file["Frame_ID"][i] == file["Frame_ID"][i + 1]:
+        count += 1
+    else:
+        # print(file["Frame_ID"][i-1], count)
+        frame.append(file["Frame_ID"][i])
+        count_data.append(count)
+        count = 1
+
+# combine two lists into a 2D array
+data = np.array(list(zip(frame, count_data)))
+
+df = pd.DataFrame.from_records(data, columns=["Frame_ID", "Occurrence"])
+df.to_csv("count.csv", index=False)
+
