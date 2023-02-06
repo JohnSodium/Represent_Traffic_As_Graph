@@ -3,4 +3,6 @@ To learn the relation between vehicles in traffic, connection between vehicles i
 Connections are made based on the distance between one another. <br /> <br />
 This is created using the NGSIM i-80 dataset.
 
-<img src="./401_graph.png" alt="Alt text" title="Optional title">
+<p align="center">
+  <img src="./401_graph.png" alt="Alt text" title="Optional title">
+</p>
