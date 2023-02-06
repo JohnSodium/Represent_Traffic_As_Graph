@@ -56,9 +56,7 @@ for i in range(len(lc_frame)):
 
             # End of the iteration, previous frame becomes current frame
             prev_frame = cur_frame
-
-    print(target_features)
-    print()
+            
     # Create nodes based on the number of vehicles in the scene
     for j in range(len(vehicle_list)):
         G.add_node(vehicle_list[j], name=vehicle_list[j])
