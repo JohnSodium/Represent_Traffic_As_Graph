@@ -1,0 +1,12 @@
+import pandas as pd
+
+
+# Run this first
+
+if __name__ == "__main__":
+    file = pd.read_csv('trajectories-0515-0530.csv')
+
+    # sort by Frame_ID
+    file.sort_values(file.columns[1], axis=0, inplace=True)
+
+    file.to_csv("sorted.csv", index=False)
