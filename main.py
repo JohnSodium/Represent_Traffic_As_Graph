@@ -23,9 +23,6 @@ for i in range(len(lc_frame)):
     vehicle_list = []
     edges = []
 
-    source_features = []
-    target_features = []
-
     for j in range(len(feature_vector)):
         print(j, '/', len(feature_vector))
         cur_frame = int(feature_vector["Frame"][j])
@@ -41,22 +38,10 @@ for i in range(len(lc_frame)):
                     if row[k] == 1:
                         # print(int(row[0]), int(row.index[k]))
                         edges.append((int(row[0]), int(row.index[k])))
-
-                        # Obtain features for the source node
-                        separate_by_id_source = feature_vector[feature_vector['Vehicle_ID'] == row[0]]
-                        separate_by_frame_source = separate_by_id_source[separate_by_id_source['Frame'] == cur_frame]
-
-                        source_features.append(separate_by_frame_source.values.tolist())
-
-                        # Obtain features for the target node
-                        separate_by_id_target = feature_vector[feature_vector['Vehicle_ID'] == int(row.index[k])]
-                        separate_by_frame_target = separate_by_id_target[separate_by_id_target['Frame'] == cur_frame]
-
-                        target_features.append(separate_by_frame_target.values.tolist())
-
+                        
             # End of the iteration, previous frame becomes current frame
             prev_frame = cur_frame
-            
+
     # Create nodes based on the number of vehicles in the scene
     for j in range(len(vehicle_list)):
         G.add_node(vehicle_list[j], name=vehicle_list[j])
@@ -74,3 +59,4 @@ for i in range(len(lc_frame)):
     plt.figure(3, figsize=(12, 12))
     nx.draw_circular(G, with_labels=True, font_weight='bold')
     plt.show()
+
